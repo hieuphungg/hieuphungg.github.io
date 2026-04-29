@@ -3,55 +3,253 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Wedding - Minh Hiếu & Tuyết Mai | 01/06/2026</title>
+    <meta name="description"
+        content="Trân trọng kính mời quý khách đến chung vui trong ngày trọng đại của Minh Hiếu & Tuyết Mai - Chủ nhật, 01/06/2026." />
 
-    <title>Thiệp cưới của chúng tôi</title>
+    <meta property="og:title" content="Wedding - Minh Hiếu & Tuyết Mai | 01/06/2026" />
+    <meta property="og:description" content="Join us on our special day - June 1, 2026" />
+    <meta property="og:type" content="website" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <section class="hero">
-        <div class="overlay">
+    <!-- ============== NAVIGATION ============== -->
+    <nav class="nav" id="nav">
+        <a href="#hero" class="nav-brand">H &amp; M</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Mở menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#hero">Trang chủ</a></li>
+            <li><a href="#venue">Địa điểm</a></li>
+            <li><a href="#schedule">Lịch trình</a></li>
+            <li><a href="#story">Chuyện tình yêu</a></li>
+            <li><a href="#gallery">Album</a></li>
+        </ul>
+    </nav>
+
+    <audio id="bgMusic" src="assets/my_love.mp3" loop preload="auto"></audio>
+
+    <button class="music-toggle" id="musicToggle" aria-label="Bật/tắt nhạc nền">
+        <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 5L6 9H3v6h3l5 4V5z" fill="currentColor" stroke="none" />
+            <path class="wave wave-1" d="M14.5 9a4 4 0 010 6" />
+            <path class="wave wave-2" d="M17 6a8 8 0 010 12" />
+            <line class="mute-line" x1="20" y1="5" x2="4" y2="20" />
+        </svg>
+    </button>
+
+    <!-- ============== HERO + COUNTDOWN ============== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay">
             <p class="small-text">Trân trọng kính mời</p>
-            <h1>Minh Hiếu & Tuyết Mai</h1>
-            <p class="date">Chủ nhật, 01 tháng 06 năm 2026</p>
-            <div class="countdown" id="countdown"></div>
-            <a class="button" href="#info">Xem thông tin tiệc cưới</a>
+            <h1 class="hero-names">
+                <span>Minh Hiếu</span>
+                <span class="amp">&amp;</span>
+                <span>Tuyết Mai</span>
+            </h1>
+            <p class="date">Chủ nhật, 1 Tháng 6, 2026</p>
+
+            <div class="countdown" id="countdown">
+                <div class="countdown-item"><span class="countdown-value" data-unit="days">0</span><span
+                        class="countdown-label">Ngày</span></div>
+                <div class="countdown-item"><span class="countdown-value" data-unit="hours">0</span><span
+                        class="countdown-label">Giờ</span></div>
+                <div class="countdown-item"><span class="countdown-value" data-unit="minutes">0</span><span
+                        class="countdown-label">Phút</span></div>
+                <div class="countdown-item"><span class="countdown-value" data-unit="seconds">0</span><span
+                        class="countdown-label">Giây</span></div>
+            </div>
+
+            <!-- <a class="button" href="#venue">Xem thông tin tiệc cưới</a> -->
         </div>
-    </section>
-
-    <section id="info" class="info">
-        <h2>Thông tin lễ cưới</h2>
-
-        <div class="card">
-            <h3>Nhà trai</h3>
-            <p>Thời gian: ..., Chủ nhật, 31/05/2026</p>
-            <p>Địa điểm tại Tư gia nhà trai</p>
-            <p>Địa chỉ: Số 1, ngõ 20, thôn Nam Hà 6, xã Phúc Lộc, Hà Nội</p>
-        </div>
-
-        <div class="card">
-            <h3>Nhà gái</h3>
-            <p>Thời gian: ..., Chủ nhật, 31/05/2026</p>
-            <p>Địa điểm tại Tư gia nhà gái</p>
-            <p>Địa chỉ: Số 9, ngõ 1, thông Vân Phúc 4, xã Phúc Lộc, Hà Nội</p>
-        </div>
-
-        <a class="button secondary" href="https://maps.google.com" target="_blank">
-            Xem bản đồ
+        <a href="#venue" class="scroll-indicator" aria-label="Cuộn xuống">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 10 12 16 18 10" />
+            </svg>
         </a>
     </section>
 
-    <section class="album">
-        <h2>Album ảnh</h2>
-        <div class="gallery">
-            <!-- <img src="assets/bride-groom.jpg" alt="Ảnh cô dâu chú rể" /> -->
-            <img src="assets/background.jpg" alt="Ảnh cưới" />
+    <!-- ============== VENUE / LOCATION ============== -->
+    <section id="venue" class="section venue">
+        <p class="section-eyebrow">Save the date</p>
+        <h2 class="section-title">Địa điểm tổ chức</h2>
+        <p class="section-sub">Chúng tôi rất hân hạnh được đón tiếp bạn tại</p>
+
+        <div class="venue-grid">
+            <div class="card venue-card">
+                <h3>Nhà trai</h3>
+                <p class="venue-time">Chủ nhật, 31/05/2026</p>
+                <p>Tư gia nhà trai</p>
+                <p class="venue-addr">Số nhà 1, ngõ 20, thôn Nam Hà 6, xã Phúc Lộc, Hà Nội</p>
+                <a class="button-outline" href="https://maps.app.goo.gl/nc9atRf8boC3UGPg9" target="_blank"
+                    rel="noopener">Xem chỉ đường</a>
+            </div>
+
+            <div class="card venue-card">
+                <h3>Nhà gái</h3>
+                <p class="venue-time">Chủ nhật, 31/05/2026</p>
+                <p>Tư gia nhà gái</p>
+                <p class="venue-addr">Số nhà 9, ngõ 1, thôn Vân Phúc 4, xã Phúc Lộc, Hà Nội</p>
+                <a class="button-outline" href="https://maps.app.goo.gl/vxiLML4Uw2kDApze7" target="_blank"
+                    rel="noopener">Xem chỉ đường</a>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <p>Thank you for being part of our love story.</p>
+    <!-- ============== SCHEDULE TIMELINE ============== -->
+    <section id="schedule" class="section schedule">
+        <p class="section-eyebrow">Wedding day</p>
+        <h2 class="section-title">Lịch trình ngày cưới</h2>
+        <p class="section-sub">Cùng chúng tôi đi qua từng khoảnh khắc trong ngày trọng đại</p>
+
+        <ol class="timeline">
+            <li class="timeline-item">
+                <div class="timeline-time">16:00 31/05/2026</div>
+                <div class="timeline-content">
+                    <h3>Tiệc cưới</h3>
+                    <p>Tiệc thân mật cùng gia đình, bạn bè và những người thân yêu.</p>
+                </div>
+            </li>
+            <li class="timeline-item">
+                <div class="timeline-time">11:30 01/06/2026</div>
+                <div class="timeline-content">
+                    <h3>Lễ vu quy tại nhà gái</h3>
+                    <p>Nghi thức truyền thống tại tư gia nhà gái.</p>
+                </div>
+            </li>
+            <li class="timeline-item">
+                <div class="timeline-time">12:45 01/06/2026</div>
+                <div class="timeline-content">
+                    <h3>Đón dâu về nhà trai</h3>
+                    <p>Đoàn xe đón dâu khởi hành về tư gia nhà trai.</p>
+                </div>
+            </li>
+            <li class="timeline-item">
+                <div class="timeline-time">13:15 01/06/2026</div>
+                <div class="timeline-content">
+                    <h3>Lễ thành hôn tại nhà trai</h3>
+                    <p>Nghi thức truyền thống tại tư gia nhà trai.</p>
+                </div>
+            </li>
+            <li class="timeline-item">
+                <div class="timeline-time">15:00 01/06/2026</div>
+                <div class="timeline-content">
+                    <h3>Tiễn khách</h3>
+                    <p>Cảm ơn Quý vị đã có mặt để chia vui cùng gia đình chúng tôi.</p>
+                </div>
+            </li>
+        </ol>
+    </section>
+
+    <!-- ============== LOVE STORY ============== -->
+    <section id="story" class="section story">
+        <div class="section-icon" aria-hidden="true">
+            <svg class="heart-icon" viewBox="0 0 32 29" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="heartGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#6d4f12" />
+                        <stop offset="30%" stop-color="#a8801f" />
+                        <stop offset="50%" stop-color="#f5d97a" />
+                        <stop offset="70%" stop-color="#a8801f" />
+                        <stop offset="100%" stop-color="#5a3f0d" />
+                    </linearGradient>
+                </defs>
+                <path fill="url(#heartGold)"
+                    d="M16 28.5l-2.3-2.1C5.4 19 0 14.1 0 8.1 0 3.6 3.6 0 8.1 0c2.5 0 5 1.2 6.6 3.1l1.3 1.5 1.3-1.5C18.9 1.2 21.4 0 23.9 0 28.4 0 32 3.6 32 8.1c0 6-5.4 10.9-13.7 18.4L16 28.5z" />
+            </svg>
+        </div>
+        <h2 class="section-title">Chuyện tình của chúng mình</h2>
+        <p class="section-sub">Từ bạn thân đến bạn đời đến mãi về sau</p>
+
+        <div class="story-list">
+            <article class="story-item">
+                <div class="story-year">2021</div>
+                <div class="story-body">
+                    <h3>Đi chơi nhiều hơn</h3>
+                    <p>Chúng mình gặp nhau nhiều hơn, đi chơi với nhau nhiều hơn... tình cảm cứ thế càng ngày càng thể
+                        hiện rõ.</p>
+                </div>
+            </article>
+            <article class="story-item">
+                <div class="story-year">6/2021</div>
+                <div class="story-body">
+                    <h3>Hẹn hò chính thức</h3>
+                    <p>Sau thời gian làm bạn, chúng mình quyết định trao nhau cơ hội. Những chuyến đi, những bữa tối,
+                        những lần cùng nhau cười.</p>
+                </div>
+            </article>
+            <article class="story-item">
+                <div class="story-year">3/2026</div>
+                <div class="story-body">
+                    <h3>Lời cầu hôn</h3>
+                    <p>Một buổi tối lãng mạn, chiếc nhẫn và câu hỏi quan trọng nhất cuộc đời. Em nói "Có" — và mọi thứ
+                        bắt đầu thay đổi.</p>
+                </div>
+            </article>
+            <article class="story-item">
+                <div class="story-year">6/2026</div>
+                <div class="story-body">
+                    <h3>Ngày cưới</h3>
+                    <p>Chúng mình chính thức về chung một nhà. Cảm ơn bạn đã đồng hành cùng câu chuyện của chúng mình.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ============== GALLERY ============== -->
+    <section id="gallery" class="section gallery-section">
+        <p class="section-eyebrow">Memories</p>
+        <h2 class="section-title">Album ảnh cưới</h2>
+        <p class="section-sub">Những khoảnh khắc đẹp được chúng mình lưu lại</p>
+
+        <div class="gallery" id="gallery">
+            <div class="gallery-item"><img src="assets/couple_01.PNG" alt="Ảnh cưới 1" loading="lazy" /></div>
+            <div class="gallery-item"><img src="assets/couple_02.PNG" alt="Ảnh cưới 2" loading="lazy" /></div>
+            <div class="gallery-item"><img src="assets/couple_03.PNG" alt="Ảnh cưới 3" loading="lazy" /></div>
+            <div class="gallery-item"><img src="assets/couple_04.PNG" alt="Ảnh cưới 4" loading="lazy" /></div>
+            <div class="gallery-item"><img src="assets/couple_05.PNG" alt="Ảnh cưới 5" loading="lazy" /></div>
+            <div class="gallery-item"><img src="assets/couple_06.PNG" alt="Ảnh cưới 6" loading="lazy" /></div>
+            <div class="gallery-item"><img src="assets/couple_07.PNG" alt="Ảnh cưới 7" loading="lazy" /></div>
+            <div class="gallery-item"><img src="assets/couple_08.JPG" alt="Ảnh cưới 8" loading="lazy" /></div>
+        </div>
+    </section>
+
+    <!-- ============== BACK TO TOP ============== -->
+    <button class="back-to-top" id="backToTop" aria-label="Lên đầu trang">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 14 12 8 18 14" />
+        </svg>
+    </button>
+
+    <!-- ============== LIGHTBOX ============== -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Đóng">&times;</button>
+        <button class="lightbox-prev" id="lightboxPrev" aria-label="Ảnh trước">&#10094;</button>
+        <img class="lightbox-img" id="lightboxImg" alt="" />
+        <button class="lightbox-next" id="lightboxNext" aria-label="Ảnh sau">&#10095;</button>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+
+    <!-- ============== FOOTER ============== -->
+    <footer class="footer">
+        <h3 class="footer-names">Minh Hiếu &amp; Tuyết Mai</h3>
+        <p>01.06.2026</p>
+        <p class="footer-thanks">Gia đình chúng tôi xin trân trọng cảm ơn sâu sắc đến tình cảm quý báu của Quý vị!</p>
     </footer>
 
     <script src="script.js"></script>
