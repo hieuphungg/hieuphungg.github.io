@@ -20,7 +20,7 @@
     --font-script: "Great Vibes", "Cormorant Garamond", cursive;
     --font-sans: "Montserrat", system-ui, -apple-system, sans-serif;
     --max-width: 1100px;
-    --nav-h: 64px;
+    --nav-h: 0px;
 }
 
 * {
@@ -54,12 +54,12 @@ a {
 
 /* ============== NAV ============== */
 .nav {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: var(--nav-h);
-    display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 28px;
@@ -78,8 +78,8 @@ a {
 
 .music-toggle {
     position: fixed;
-    top: calc(var(--nav-h) + 14px);
-    right: 24px;
+    top: 20px;
+    left: 24px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -112,8 +112,8 @@ a {
 
 @media (max-width: 600px) {
     .music-toggle {
-        top: calc(var(--nav-h) + 10px);
-        right: 16px;
+        top: 14px;
+        left: 16px;
         width: 36px;
         height: 36px;
     }
@@ -332,22 +332,20 @@ a {
     align-items: center;
     gap: 5px;
     background: linear-gradient(135deg,
-        #d4a93a 0%,
-        #fff5c4 20%,
-        #ffeb8a 40%,
-        #fffae0 50%,
-        #ffeb8a 60%,
-        #fff5c4 80%,
-        #d4a93a 100%);
+            #d4a93a 0%,
+            #fff5c4 20%,
+            #ffeb8a 40%,
+            #fffae0 50%,
+            #ffeb8a 60%,
+            #fff5c4 80%,
+            #d4a93a 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
     filter:
-        drop-shadow(0 0 14px rgba(255, 230, 120, 0.85))
-        drop-shadow(0 0 28px rgba(255, 200, 80, 0.5))
-        drop-shadow(0 2px 4px rgba(0, 0, 0, 0.55));
+        drop-shadow(0 0 14px rgba(255, 230, 120, 0.85)) drop-shadow(0 0 28px rgba(255, 200, 80, 0.5)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.55));
     animation: shimmer 3.5s ease-in-out infinite;
 }
 
@@ -356,8 +354,15 @@ a {
 }
 
 @keyframes shimmer {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .date {
@@ -384,9 +389,9 @@ a {
 .countdown-item {
     position: relative;
     background: linear-gradient(135deg,
-        rgba(250, 240, 200, 0.45) 0%,
-        rgba(240, 225, 170, 0.4) 50%,
-        rgba(230, 210, 150, 0.45) 100%);
+            rgba(250, 240, 200, 0.45) 0%,
+            rgba(240, 225, 170, 0.4) 50%,
+            rgba(230, 210, 150, 0.45) 100%);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     color: #5a4413;
@@ -413,8 +418,15 @@ a {
 }
 
 @keyframes sparkleSweep {
-    0%, 60% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+
+    0%,
+    60% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 .countdown-value {
@@ -575,17 +587,32 @@ a {
     width: 38px;
     height: auto;
     filter:
-        drop-shadow(0 0 8px rgba(245, 217, 122, 0.6))
-        drop-shadow(0 2px 4px rgba(109, 79, 18, 0.35));
+        drop-shadow(0 0 8px rgba(245, 217, 122, 0.6)) drop-shadow(0 2px 4px rgba(109, 79, 18, 0.35));
     animation: heartBeat 1.6s ease-in-out infinite;
 }
 
 @keyframes heartBeat {
-    0%, 100% { transform: scale(1); }
-    15% { transform: scale(1.15); }
-    30% { transform: scale(1); }
-    45% { transform: scale(1.1); }
-    60% { transform: scale(1); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.15);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.1);
+    }
+
+    60% {
+        transform: scale(1);
+    }
 }
 
 .section-title {
@@ -601,8 +628,7 @@ a {
     -webkit-text-fill-color: transparent;
     color: transparent;
     filter:
-        drop-shadow(0 1px 0 rgba(255, 240, 180, 0.5))
-        drop-shadow(0 2px 5px rgba(109, 79, 18, 0.35));
+        drop-shadow(0 1px 0 rgba(255, 240, 180, 0.5)) drop-shadow(0 2px 5px rgba(109, 79, 18, 0.35));
 }
 
 .section-title::after {
@@ -630,6 +656,11 @@ a {
 /* ============== VENUE ============== */
 .venue {
     background: var(--color-bg);
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .venue-grid {
@@ -771,49 +802,90 @@ a {
 
 /* ============== LOVE STORY ============== */
 .story {
-    background: var(--color-bg);
+    position: relative;
+    background:
+        linear-gradient(rgba(40, 30, 10, 0.15), rgba(40, 30, 10, 0.25)),
+        url("assets/couple_04.PNG") center top/cover no-repeat;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.story .section-sub {
+    color: #fff5dc;
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.6),
+        0 0 12px rgba(0, 0, 0, 0.4);
 }
 
 .story-list {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 14px;
     max-width: 800px;
     margin: 0 auto;
 }
 
 .story-item {
     display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 28px;
+    grid-template-columns: 110px 1fr;
+    gap: 20px;
     align-items: center;
-    background: var(--color-card);
-    padding: 28px 32px;
+    background: rgba(30, 20, 5, 0.12);
+    backdrop-filter: blur(3px) saturate(1.1);
+    -webkit-backdrop-filter: blur(3px) saturate(1.1);
+    border: 1px solid rgba(245, 217, 122, 0.3);
+    padding: 18px 24px;
     border-radius: var(--radius);
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     text-align: left;
-    transition: transform 0.3s;
+    transition: transform 0.3s, background 0.3s;
 }
 
 .story-item:hover {
     transform: translateY(-4px);
+    background: rgba(30, 20, 5, 0.25);
+}
+
+.story-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-right: 1px solid rgba(184, 146, 58, 0.35);
+    padding-right: 20px;
+}
+
+.story-icon-svg {
+    width: 38px;
+    height: 38px;
+    filter:
+        drop-shadow(0 0 6px rgba(245, 217, 122, 0.7)) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+    transition: transform 0.4s ease;
+}
+
+.story-item:hover .story-icon-svg {
+    transform: scale(1.12) rotate(-4deg);
 }
 
 .story-year {
     font-family: var(--font-script);
-    font-size: 60px;
+    font-size: 38px;
     font-weight: 600;
     line-height: 1;
     text-align: center;
-    border-right: 1px solid var(--color-bg-soft);
-    padding-right: 24px;
-    background: var(--gold-text-gradient);
+    white-space: nowrap;
+    background: linear-gradient(135deg, #e6c870 0%, #fff5c4 50%, #d4a93a 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    filter: drop-shadow(0 1px 2px rgba(109, 79, 18, 0.3));
+    filter:
+        drop-shadow(0 0 8px rgba(245, 217, 122, 0.6)) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
     animation: shimmer 5s ease-in-out infinite;
 }
 
@@ -822,16 +894,20 @@ a {
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 8px;
-    background: var(--gold-text-gradient);
+    background: linear-gradient(135deg, #f5d97a 0%, #fff5c4 50%, #e6c870 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5));
 }
 
 .story-body p {
-    color: var(--color-text-soft);
+    color: #fff5dc;
     font-size: 15px;
+    text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.55),
+        0 0 8px rgba(0, 0, 0, 0.35);
 }
 
 /* ============== GALLERY ============== */
@@ -1157,17 +1233,27 @@ a {
 
     .story-item {
         grid-template-columns: 1fr;
-        gap: 8px;
-        padding: 24px;
+        gap: 6px;
+        padding: 16px 20px;
         text-align: center;
     }
 
-    .story-year {
+    .story-marker {
+        flex-direction: row;
+        gap: 12px;
         border-right: none;
         border-bottom: 1px solid var(--color-bg-soft);
         padding-right: 0;
-        padding-bottom: 12px;
-        font-size: 48px;
+        padding-bottom: 8px;
+    }
+
+    .story-icon-svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .story-year {
+        font-size: 30px;
     }
 
     .story-body {

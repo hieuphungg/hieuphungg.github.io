@@ -60,6 +60,7 @@ const musicToggle = document.getElementById("musicToggle");
 
 if (bgMusic && musicToggle) {
   bgMusic.volume = 0.5;
+  bgMusic.muted = false;
 
   const playMusic = () =>
     bgMusic.play().then(() => musicToggle.classList.add("playing")).catch(() => {});
@@ -77,26 +78,53 @@ if (bgMusic && musicToggle) {
   bgMusic.addEventListener("play", () => musicToggle.classList.add("playing"));
   bgMusic.addEventListener("pause", () => musicToggle.classList.remove("playing"));
 
+  const INTERACTION_EVENTS = [
+    "click", "touchstart", "touchend", "keydown",
+    "scroll", "wheel", "pointerdown", "mousemove",
+  ];
+
+  const cleanup = () => {
+    INTERACTION_EVENTS.forEach((ev) =>
+      document.removeEventListener(ev, tryAutoplayOnInteraction, { passive: true })
+    );
+  };
+
   const tryAutoplayOnInteraction = (e) => {
-    if (e.target.closest("#musicToggle")) {
+    if (e.target && e.target.closest && e.target.closest("#musicToggle")) {
       cleanup();
       return;
     }
     if (bgMusic.paused) playMusic();
     cleanup();
   };
-  const cleanup = () => {
-    document.removeEventListener("click", tryAutoplayOnInteraction);
-    document.removeEventListener("touchstart", tryAutoplayOnInteraction);
-    document.removeEventListener("keydown", tryAutoplayOnInteraction);
+
+  const armInteractionListeners = () => {
+    INTERACTION_EVENTS.forEach((ev) =>
+      document.addEventListener(ev, tryAutoplayOnInteraction, { passive: true })
+    );
   };
 
-  bgMusic.play().then(() => {
-    musicToggle.classList.add("playing");
-  }).catch(() => {
-    document.addEventListener("click", tryAutoplayOnInteraction);
-    document.addEventListener("touchstart", tryAutoplayOnInteraction);
-    document.addEventListener("keydown", tryAutoplayOnInteraction);
+  const attemptAutoplay = () => {
+    bgMusic.play().then(() => {
+      musicToggle.classList.add("playing");
+    }).catch(() => {
+      armInteractionListeners();
+    });
+  };
+
+  if (bgMusic.readyState >= 2) {
+    attemptAutoplay();
+  } else {
+    bgMusic.addEventListener("canplay", attemptAutoplay, { once: true });
+    armInteractionListeners();
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible" && bgMusic.paused && musicToggle.classList.contains("was-playing")) {
+      playMusic();
+    } else if (document.visibilityState === "hidden" && !bgMusic.paused) {
+      musicToggle.classList.add("was-playing");
+    }
   });
 }
 
