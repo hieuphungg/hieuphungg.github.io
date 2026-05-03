@@ -1,3 +1,98 @@
+// ============== FIREWORKS ==============
+(function () {
+  const hero = document.getElementById('hero');
+  if (!hero) return;
+
+  const canvas = document.createElement('canvas');
+  canvas.id = 'fireworks-canvas';
+  hero.insertBefore(canvas, hero.firstChild);
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width  = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const PALETTES = [
+    ['#ff6b9d','#ff8fab','#ffb3c6','#ffc8dd'],
+    ['#f5d97a','#ffe99a','#fff3c0','#ffd700'],
+    ['#a8edea','#88d8c0','#6ec6b8','#4fc3f7'],
+    ['#d4a8ff','#c084fc','#e879f9','#f0abfc'],
+    ['#ff9a3c','#ffb347','#ffd700','#ffe066'],
+    ['#ff5c5c','#ff8080','#ffaaaa','#ffd6d6'],
+    ['#80ff80','#aaffaa','#d4ffb2','#b3f590'],
+    ['#ffffff','#f5f5f5','#e0e0e0','#ffe0e0'],
+  ];
+
+  class Spark {
+    constructor(x, y, palette) {
+      this.x = x; this.y = y;
+      this.color = palette[Math.floor(Math.random() * palette.length)];
+      const angle = Math.random() * Math.PI * 2;
+      const spd   = 1 + Math.random() * 4;
+      this.vx = Math.cos(angle) * spd;
+      this.vy = Math.sin(angle) * spd - 0.5;
+      this.alpha   = 1;
+      this.decay   = 0.008 + Math.random() * 0.014;
+      this.gravity = 0.055;
+      this.len     = 3 + Math.random() * 5;
+    }
+    update() {
+      this.vy += this.gravity;
+      this.vx *= 0.985;
+      this.x  += this.vx;
+      this.y  += this.vy;
+      this.alpha -= this.decay;
+    }
+    draw() {
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, this.alpha);
+      ctx.strokeStyle = this.color;
+      ctx.lineWidth   = 1;
+      ctx.shadowColor = this.color;
+      ctx.shadowBlur  = 4;
+      ctx.beginPath();
+      ctx.moveTo(this.x, this.y);
+      ctx.lineTo(this.x - this.vx * this.len, this.y - this.vy * this.len);
+      ctx.stroke();
+      ctx.restore();
+    }
+    isDead() { return this.alpha <= 0; }
+  }
+
+  let sparks = [];
+
+  function burst(x, y) {
+    const palette = PALETTES[Math.floor(Math.random() * PALETTES.length)];
+    const count   = 70 + Math.floor(Math.random() * 50);
+    for (let i = 0; i < count; i++) sparks.push(new Spark(x, y, palette));
+  }
+
+  function scheduleNext() {
+    const delay = 1500 + Math.random() * 2000;
+    setTimeout(() => {
+      burst(
+        canvas.width  * (0.1 + Math.random() * 0.8),
+        canvas.height * (0.05 + Math.random() * 0.5)
+      );
+      scheduleNext();
+    }, delay);
+  }
+
+  burst(canvas.width * 0.25, canvas.height * 0.2);
+  burst(canvas.width * 0.72, canvas.height * 0.15);
+  setTimeout(scheduleNext, 600);
+
+  function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    sparks = sparks.filter(s => { s.update(); s.draw(); return !s.isDead(); });
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
 // ============== COUNTDOWN ==============
 const WEDDING_DATE = new Date("2026-06-01T00:00:00+07:00").getTime();
 
