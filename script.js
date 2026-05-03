@@ -173,7 +173,8 @@ let currentIndex = 0;
 function showLightbox(idx) {
   currentIndex = (idx + galleryItems.length) % galleryItems.length;
   const img = galleryItems[currentIndex];
-  lightboxImg.src = img.currentSrc || img.src;
+  const src = img.currentSrc || img.src || img.dataset.src || '';
+  lightboxImg.src = src;
   lightboxImg.alt = img.alt;
   lightboxCounter.textContent = currentIndex + 1 + " / " + galleryItems.length;
   lightbox.classList.add("open");
@@ -188,7 +189,8 @@ function closeLightbox() {
 }
 
 galleryItems.forEach((img, idx) => {
-  img.parentElement.addEventListener("click", () => showLightbox(idx));
+  const item = img.closest('.gallery-item') || img.parentElement;
+  item.addEventListener("click", () => showLightbox(idx));
 });
 
 lightboxClose.addEventListener("click", closeLightbox);
@@ -205,6 +207,28 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") showLightbox(currentIndex - 1);
   if (e.key === "ArrowRight") showLightbox(currentIndex + 1);
 });
+
+// ============== SCROLL REVEAL ==============
+const revealEls = document.querySelectorAll('[data-reveal]');
+if (revealEls.length) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const delay = +(entry.target.dataset.delay || 0);
+          if (delay) {
+            setTimeout(() => entry.target.classList.add('revealed'), delay);
+          } else {
+            entry.target.classList.add('revealed');
+          }
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+  revealEls.forEach((el) => revealObserver.observe(el));
+}
 
 // Touch swipe on lightbox
 let touchStartX = 0;
