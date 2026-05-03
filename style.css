@@ -273,26 +273,15 @@ a {
     content: "";
     position: absolute;
     inset: 0;
-    background:
-        radial-gradient(circle at 20% 30%, rgba(245, 217, 122, 0.18) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(255, 243, 192, 0.15) 0%, transparent 40%),
-        linear-gradient(180deg, rgba(40, 30, 10, 0.35) 0%, rgba(30, 20, 5, 0.55) 100%);
+    background: linear-gradient(180deg, rgba(20, 14, 4, 0.38) 0%, rgba(20, 14, 4, 0.52) 100%);
 }
 
 .hero-overlay {
     position: relative;
     z-index: 1;
-    background: rgba(250, 245, 234, 0.03);
-    backdrop-filter: blur(3px) saturate(1.1);
-    -webkit-backdrop-filter: blur(3px) saturate(1.1);
     padding: 56px 36px;
-    border-radius: var(--radius-lg);
     max-width: 720px;
     width: 100%;
-    border: 1px solid rgba(245, 217, 122, 0.35);
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.35),
-        inset 0 0 80px rgba(245, 217, 122, 0.08);
     animation: fadeUp 0.9s ease both;
 }
 
@@ -363,7 +352,7 @@ a {
     padding-top: 0.1em;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     gap: 5px;
     background: linear-gradient(135deg,
             #d4a93a 0%,
@@ -383,8 +372,21 @@ a {
     animation: shimmer 3.5s ease-in-out infinite;
 }
 
+.hero-names span:first-child {
+    text-align: center;
+    padding-right: 15%;
+    /* tăng/giảm % này để điều chỉnh độ lệch trái (padding = offset × 2) */
+}
+
 .hero-names .amp {
     font-size: 56px;
+    text-align: center;
+}
+
+.hero-names span:last-child {
+    text-align: center;
+    padding-left: 15%;
+    /* tăng/giảm % này để điều chỉnh độ lệch phải (padding = offset × 2) */
 }
 
 @keyframes shimmer {
@@ -423,11 +425,11 @@ a {
 .countdown-item {
     position: relative;
     background: linear-gradient(135deg,
-            rgba(250, 240, 200, 0.45) 0%,
-            rgba(240, 225, 170, 0.4) 50%,
-            rgba(230, 210, 150, 0.45) 100%);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+            rgba(250, 240, 200, 0.12) 0%,
+            rgba(240, 225, 170, 0.08) 50%,
+            rgba(230, 210, 150, 0.12) 100%);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     color: #5a4413;
     border-radius: 14px;
     padding: 14px 8px;
@@ -436,9 +438,9 @@ a {
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    border: 1px solid rgba(184, 146, 58, 0.25);
-    opacity: 0.85;
+    box-shadow: none;
+    border: 1.5px solid rgba(255, 235, 120, 0.6);
+    opacity: 0.95;
     overflow: hidden;
 }
 
@@ -466,7 +468,7 @@ a {
 .countdown-value {
     position: relative;
     z-index: 1;
-    font-family: var(--font-serif);
+    font-family: var(--font-script);
     font-size: 30px;
     font-weight: 700;
     line-height: 1;
@@ -749,6 +751,12 @@ a {
     background: var(--color-bg-soft);
     max-width: none;
     width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
 .schedule>.section-title,
@@ -811,7 +819,7 @@ a {
 }
 
 .timeline-time {
-    font-family: var(--font-serif);
+    font-family: var(--font-script);
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 6px;
@@ -1356,7 +1364,7 @@ a {
     }
 
     .date {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .countdown {
@@ -1373,7 +1381,8 @@ a {
     }
 
     .countdown-label {
-        font-size: 10px;
+        font-size: 11px;
+        font-family: var(--font-serif);
     }
 
     .button {
