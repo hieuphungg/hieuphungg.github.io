@@ -173,7 +173,7 @@ let currentIndex = 0;
 function showLightbox(idx) {
   currentIndex = (idx + galleryItems.length) % galleryItems.length;
   const img = galleryItems[currentIndex];
-  lightboxImg.src = img.src;
+  lightboxImg.src = img.currentSrc || img.src;
   lightboxImg.alt = img.alt;
   lightboxCounter.textContent = currentIndex + 1 + " / " + galleryItems.length;
   lightbox.classList.add("open");

@@ -265,7 +265,7 @@ a {
 .hero-bg {
     position: absolute;
     inset: 0;
-    background: url("assets/couple_01.PNG") center/cover no-repeat;
+    background: image-set(url("assets/couple_01.webp") type("image/webp"), url("assets/couple_01.PNG") type("image/png")) center/cover no-repeat;
     z-index: 0;
 }
 
@@ -805,7 +805,7 @@ a {
     position: relative;
     background:
         linear-gradient(rgba(40, 30, 10, 0.15), rgba(40, 30, 10, 0.25)),
-        url("assets/couple_04.PNG") center top/cover no-repeat;
+        image-set(url("assets/couple_04.webp") type("image/webp"), url("assets/couple_04.PNG") type("image/png")) center top/cover no-repeat;
     min-height: 100vh;
     min-height: 100dvh;
     display: flex;
