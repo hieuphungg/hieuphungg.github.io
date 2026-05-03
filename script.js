@@ -1,5 +1,5 @@
 // ============== COUNTDOWN ==============
-const WEDDING_DATE = new Date("2026-06-01T10:00:00+07:00").getTime();
+const WEDDING_DATE = new Date("2026-06-01T00:00:00+07:00").getTime();
 
 const countdownEls = {
   days: document.querySelector('[data-unit="days"]'),
@@ -16,9 +16,8 @@ function updateCountdown() {
   const distance = WEDDING_DATE - Date.now();
 
   if (distance <= 0) {
-    Object.values(countdownEls).forEach((el) => el && (el.textContent = "00"));
+    Object.values(countdownEls).forEach((el) => el && (el.textContent = "0"));
     const cd = document.getElementById("countdown");
-    if (cd) cd.innerHTML = '<p style="color:#fff;font-size:20px;margin:auto;">Hôm nay là ngày cưới!</p>';
     return false;
   }
 
@@ -53,6 +52,16 @@ window.addEventListener("scroll", () => {
 backToTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
+// Scroll indicator: scroll chính xác đến cuối hero section
+const scrollIndicatorEl = document.querySelector('.scroll-indicator');
+if (scrollIndicatorEl) {
+  scrollIndicatorEl.addEventListener('click', (e) => {
+    e.preventDefault();
+    const hero = document.getElementById('hero');
+    if (hero) window.scrollTo({ top: hero.offsetHeight, behavior: 'smooth' });
+  });
+}
 
 // ============== BACKGROUND MUSIC ==============
 const bgMusic = document.getElementById("bgMusic");

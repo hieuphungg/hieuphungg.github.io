@@ -265,7 +265,7 @@ a {
 .hero-bg {
     position: absolute;
     inset: 0;
-    background: image-set(url("assets/couple_01.webp") type("image/webp"), url("assets/couple_01.PNG") type("image/png")) center/cover no-repeat;
+    background: image-set(url("assets/couple_03.webp") type("image/webp")) center/cover no-repeat;
     z-index: 0;
 }
 
@@ -318,6 +318,40 @@ a {
     text-shadow:
         0 1px 2px rgba(0, 0, 0, 0.6),
         0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.hero-ceremony {
+    font-family: var(--font-script);
+    font-size: 28px;
+    color: rgba(255, 245, 220, 0.88);
+    letter-spacing: 3px;
+    margin-top: 6px;
+    display: inline-block;
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.55),
+        0 0 18px rgba(245, 217, 122, 0.35);
+}
+
+.hero-ceremony::after {
+    content: "";
+    display: block;
+    margin-top: 1px;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(245, 217, 122, 0.5) 20%,
+            rgba(255, 243, 192, 0.95) 50%,
+            rgba(245, 217, 122, 0.5) 80%,
+            transparent 100%);
+    box-shadow: 0 0 8px rgba(245, 217, 122, 0.6);
+    animation: ceremonyLine 1.2s 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes ceremonyLine {
+    to {
+        width: 100%;
+    }
 }
 
 .hero-names {
@@ -805,7 +839,7 @@ a {
     position: relative;
     background:
         linear-gradient(rgba(40, 30, 10, 0.15), rgba(40, 30, 10, 0.25)),
-        image-set(url("assets/couple_04.webp") type("image/webp"), url("assets/couple_04.PNG") type("image/png")) center top/cover no-repeat;
+        image-set(url("assets/couple_04.webp") type("image/webp")) center top/cover no-repeat;
     min-height: 100vh;
     min-height: 100dvh;
     display: flex;
@@ -1164,7 +1198,7 @@ a {
 [data-reveal] {
     opacity: 0;
     transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: opacity, transform;
 }
 
