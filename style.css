@@ -265,7 +265,7 @@ a {
 .hero-bg {
     position: absolute;
     inset: 0;
-    background: image-set(url("assets/couple_03.webp") type("image/webp")) center/cover no-repeat;
+    background: image-set(url("assets/bg_welcome.webp") type("image/webp")) center/cover no-repeat;
     z-index: 0;
 }
 
@@ -847,7 +847,7 @@ a {
     position: relative;
     background:
         linear-gradient(rgba(40, 30, 10, 0.15), rgba(40, 30, 10, 0.25)),
-        image-set(url("assets/couple_04.webp") type("image/webp")) center top/cover no-repeat;
+        image-set(url("assets/bg_love_story.webp") type("image/webp")) center top/cover no-repeat;
     min-height: 100vh;
     min-height: 100dvh;
     display: flex;
